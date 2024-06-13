@@ -117,7 +117,7 @@
         modules = [ ./system ];
 
         extraArgs = {
-          user = "z0al";
+          user = "riordan";
           theme = "catppuccin";
           version = "23.11";
         };

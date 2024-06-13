@@ -51,6 +51,8 @@ function up
     # Any unknown option is passed through to the underlying command.
     set -l options $argv[2..-1]
 
+    echo "Using flake: $flake"
+    
     switch $argv[1]
         case build
             rebuild build --flake $flake $options

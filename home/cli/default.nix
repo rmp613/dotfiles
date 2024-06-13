@@ -9,11 +9,12 @@
     ./fzf.nix
     ./gh.nix
     ./jq.nix
-    ./kubectl.nix
+    ./lsd.nix
+    # ./kubectl.nix
     ./localrc.nix
     ./nix-index.nix
     ./terraform.nix
-    ./up.nix
+    ./up.nix # helpers to build nix
     ./zoxide.nix
   ];
 }

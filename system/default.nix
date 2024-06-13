@@ -31,5 +31,5 @@
   };
 
   # Localization
-  time.timeZone = "Europe/London";
+  # time.timeZone = "Europe/London";
 }

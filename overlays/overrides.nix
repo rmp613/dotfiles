@@ -23,11 +23,11 @@ channels: final: prev: {
     vscode-extensions
 
     # Apps
-    _1password
-    _1password-gui
-    android-studio
-    firefox-devedition-bin
-    obsidian
+    # _1password
+    # _1password-gui
+    # android-studio
+    # firefox-devedition-bin
+    # obsidian
     zoom-us
 
     # Other

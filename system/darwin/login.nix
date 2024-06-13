@@ -13,14 +13,14 @@
     GuestEnabled = false;
 
     # Hides the Restart button on the login screen. Default is false.
-    RestartDisabled = true;
+    # RestartDisabled = true;
 
     # Hides the Shut Down button on the login screen. Default is false.
-    ShutDownDisabled = true;
+    # ShutDownDisabled = true;
 
     # If set to true, the Power Off menu item will be disabled when the
     # user is logged in. Default is false.
-    PowerOffDisabledWhileLoggedIn = true;
+    # PowerOffDisabledWhileLoggedIn = true;
   };
 
   system.defaults.CustomUserPreferences = {

@@ -1,4 +1,4 @@
-{ config, pkgs, user, ... }:
+{ config, pkgs, lib, user, ... }:
 
 let
   aliases = {
@@ -31,22 +31,24 @@ in
     git = {
       enable = true;
 
-      userName = "z0al";
-      userEmail = "z0al@users.noreply.github.com";
+      userName = "Riordan Pawley";
+      userEmail = "riordan@dogg.com.au";
 
-      # Signing is done via the 1Password app
-      signing = {
-        signByDefault = true;
-        key = config.d.apps.onepassword.ssh.key;
-      };
+      # # Signing is done via the 1Password app
+      # signing = {
+      #   signByDefault = true;
+      #   key = config.d.apps.onepassword.ssh.key;
+      # };
 
       extraConfig = {
         init.defaultBranch = "main";
-
-        gpg = {
-          format = "ssh";
-          ssh.program = config.d.apps.onepassword.ssh.sign;
+        core = {
+          editor = "hx";
         };
+        # gpg = {
+        #   format = "ssh";
+        #   ssh.program = config.d.apps.onepassword.ssh.sign;
+        # };
 
         log = {
           decorate = true;
@@ -56,11 +58,18 @@ in
         pull.rebase = false;
 
         # Autostash on "git pull ..."
-        merge.autoStash = true;
+        merge = {
+          autoStash = true;
+          conflictStyle = "diff3";
+        };
+        rerere.enabled = true;
+        help.autocorrect = 1;
         rebase.autoStash = true;
 
         push.autoSetupRemote = true;
       };
+
+      ignores = lib.splitString "\n" (builtins.readFile ./gitignore_global);
     };
   };
 }

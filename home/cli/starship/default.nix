@@ -22,6 +22,12 @@
         format = "[$duration]($style)";
       };
 
+      directory = {
+        read_only = " ";
+        truncate_to_repo = false;
+      };
+      git_branch.symbol = " ";
+      git_status.format = "[$ahead_behind$untracked$modified]($style) ";
       nix_shell = {
         format = "in [$symbol$state(\\($name\\))]($style) ";
         symbol = "❄️ ";

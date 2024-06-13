@@ -12,7 +12,7 @@ let
       [ "--config-precedence" "prefer-file" ]
 
       # Formating Options:
-      [ "--use-tabs" ]
+      # [ "--use-tabs" ]
       [ "--tab-width" "2" ]
       [ "--print-width" "80" ]
       [ "--quote-prop" "consistent" ]

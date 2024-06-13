@@ -97,7 +97,7 @@ in
 
         # 10. Temporarily access (Spotify, 1Password, Settings ..etc)
         (toWorkspace 10 [
-          "1password"
+          # "1password"
           "bluetooth-sendto"
           "gcm-calibrate"
           "gcm-picker"

@@ -15,8 +15,8 @@ jobs:
       - run: nix --experimental-features 'nix-command flakes' flake update
       - name: commit & push
         run: |
-          git config --global user.name 'z0al'
-          git config --global user.email 'z0al@users.noreply.github.com'
+          git config --global user.name 'Riordan Pawley'
+          git config --global user.email 'riordan@dogg.com.au'
           git add flake.lock
           git commit -m "chore(ci): update flake.lock" --allow-empty
           git push

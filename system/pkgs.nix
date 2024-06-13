@@ -7,7 +7,7 @@
 
     # Utils
     cmake
-    coreutils
+    # coreutils
     curl
     entr
     fd
@@ -24,5 +24,8 @@
     ripgrep
     sqlite
     unzip
-  ];
+  ] ++ (lib.optionals pkgs.stdenv.isDarwin [
+    terminal-notifier
+    coreutils
+  ]);
 }
