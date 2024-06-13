@@ -2,11 +2,11 @@
   imports = [
     ./helix
     # ./rofi
-    ./vscode
+    # ./vscode
     ./wezterm
 
     # ./1password.nix
-    ./browser.nix
+    # ./browser.nix
     # ./flameshot.nix
     # ./gimp.nix
     # ./inkscape.nix

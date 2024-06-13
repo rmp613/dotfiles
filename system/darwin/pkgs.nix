@@ -7,15 +7,38 @@
       cleanup = "uninstall";
     };
 
+    masApps = {
+      Xcode = 497799835;
+      Slack = 803453959;
+      Bitwarden = 1352778147;
+    };
     casks = [
       # https://github.com/NixOS/nixpkgs/issues/254944
-      "1password"
-      "1password-cli"
-      "docker"
+      # "1password"
+      # "1password-cli"
+      # "docker"
+      # "google-chrome"
+      # "raycast"
+      # "scroll-reverser"
+      # "openscad-snapshot"
+      "discord"
+      # "font-jetbrains-mono"
+      # "font-jetbrains-mono-nerd-font"
       "google-chrome"
+      "hammerspoon"
+      "slack"
+      "zoom"
+      "visual-studio-code"
+      "arc"
+      "linear-linear"
+      "orbstack"
+      "rectangle"
+      "soundsource"
+      "istat-menus"
       "raycast"
-      "scroll-reverser"
-      "openscad-snapshot"
+      "iina"
+      "tableplus"
+      "microsoft-teams"
     ];
 
     taps = [

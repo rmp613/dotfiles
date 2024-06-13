@@ -51,7 +51,6 @@ in
 
         # Themes
         catppuccin.catppuccin-vsc
-        dracula-theme.theme-dracula
 
         # Formatting and linting
         dbaeumer.vscode-eslint
