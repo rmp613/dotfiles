@@ -14,9 +14,9 @@
   # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
   homebrew = {
     brews = [
-      {
-        name = "yabai";
-      }
+      
+        "yabai"
+      
     ];
 
     taps = [

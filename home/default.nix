@@ -22,21 +22,21 @@ in
   };
 
   xdg.enable = true;
-  programs.ssh.enable = true;
+  # programs.ssh.enable = true;
   programs.home-manager.enable = true;
   xsession.numlock.enable = pkgs.stdenv.isLinux;
 
   d.fs.persisted = {
     directories = [
-      "Desktop"
-      "Documents"
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Videos"
-      "github"
+      # "Desktop"
+      # "Documents"
+      # "Downloads"
+      # "Music"
+      # "Pictures"
+      # "Videos"
+      # "github"
       ".dotfiles"
-      ".ssh"
+      # ".ssh"
 
       # Gnome Keyring
       ".local/share/keyrings"
