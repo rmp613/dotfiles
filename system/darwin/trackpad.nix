@@ -17,7 +17,7 @@
 
     # Whether to enable “Natural” scrolling direction. The default is
     # true.
-    "com.apple.swipescrolldirection" = true;
+    "com.apple.swipescrolldirection" = false;
 
     # When to show the scrollbars. Options are:
     # - WhenScrolling
