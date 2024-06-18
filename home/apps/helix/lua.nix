@@ -22,7 +22,6 @@
 
             # Formating Options:
             [ "--column-width" "80" ]
-            [ "--indent-type" "Tabs" ]
             [ "--indent-width" "2" ]
             [ "--sort-requires" ]
           ];
