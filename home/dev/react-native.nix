@@ -15,7 +15,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    d.dev.node.enable = true;
+    # d.dev.node.enable = true;
 
     home.packages = with pkgs; [
       android-studio
