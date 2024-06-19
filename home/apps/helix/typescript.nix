@@ -4,7 +4,7 @@ let
   cfg = {
     indent = {
       tab-width = 2;
-      unit = "\t";
+      unit = " ";
     };
 
     language-servers = [

@@ -1,23 +1,23 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   pkg = pkgs.nodePackages.prettier;
 
   prettier = parser: {
     command = "${pkg}/bin/prettier";
-    args = lib.flatten [
-      [ "--parser" parser ]
+    # args = lib.flatten [
+    #   [ "--parser" parser ]
 
-      # Prefer project-specific config file over the options defined below.
-      [ "--config-precedence" "prefer-file" ]
+    #   # Prefer project-specific config file over the options defined below.
+    #   [ "--config-precedence" "prefer-file" ]
 
-      # Formating Options:
-      # [ "--use-tabs" ]
-      [ "--tab-width" "2" ]
-      [ "--print-width" "80" ]
-      [ "--quote-props" "consistent" ]
-      [ "--prose-wrap" "always" ]
-    ];
+    #   # Formating Options:
+    #   # [ "--use-tabs" ]
+    #   [ "--tab-width" "2" ]
+    #   [ "--print-width" "80" ]
+    #   [ "--quote-props" "consistent" ]
+    #   [ "--prose-wrap" "always" ]
+    # ];
   };
 in
 

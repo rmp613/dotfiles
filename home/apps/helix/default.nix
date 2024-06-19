@@ -14,11 +14,11 @@ let
 
     editor = {
       auto-format = true;
-      bufferline = "never";
+      # bufferline = "never";
       color-modes = true;
       cursorline = true;
       indent-guides.render = true;
-      line-number = "absolute";
+      line-number = "relative";
       soft-wrap.enable = true;
 
       # FIXME: remove once https://github.com/helix-editor/helix/issues/1475 is fixed
@@ -55,7 +55,8 @@ in
   imports = [
     ./lua.nix
     ./nix.nix
-    ./prettier.nix
+    # ./prettier.nix
+    ./biome.nix
     ./prisma.nix
     ./typescript.nix
   ];

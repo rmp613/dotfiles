@@ -12,7 +12,7 @@
         name = "lua";
         indent = {
           tab-width = 2;
-          unit = "\t";
+          unit = " ";
         };
 
         formatter = {
