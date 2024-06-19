@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./node.nix
+    # ./node.nix
     ./python.nix
     ./react-native.nix
     ./rust.nix
