@@ -13,7 +13,7 @@ in
 
   programs.helix.languages.language-server.biome = {
     command = "biome";
-    args = "lsp-proxy";
+    args = [ "lsp-proxy" ];
   };
   programs.helix.languages.language = [
     { name = "html"; formatter = biome "html"; }

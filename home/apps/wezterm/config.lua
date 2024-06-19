@@ -29,7 +29,8 @@ local config = {
 	scrollback_lines = 10000,
 
 	-- https://sw.kovidgoyal.net/kitty/keyboard-protocol/
-	enable_kitty_keyboard = true,
+	-- note that this seems to cause del to be backspace?!!?
+	-- enable_kitty_keyboard = true,
 
 	-- Window
 	enable_wayland = false,
@@ -48,7 +49,7 @@ local config = {
 	hide_tab_bar_if_only_one_tab = true,
 
 	-- Keybindings
-	disable_default_key_bindings = false,
+	-- disable_default_key_bindings = false,
 }
 
 -- MacOS overrides
