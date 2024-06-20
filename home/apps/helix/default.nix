@@ -11,7 +11,20 @@ let
 
   settings = {
     theme = themeMapping.${theme};
-
+    keys = {
+      normal = {
+        space.F = "file_picker_in_current_buffer_directory";
+        space.W = ":q";
+        # backspace = "delete_char_backward";
+        # del = "delete_char_forward";
+      };
+      insert = {
+        down = ["normal_mode" "move_line_down"];
+        up = ["normal_mode" "move_line_up"];
+        left = ["normal_mode" "move_char_left"];
+        right = ["normal_mode" "move_char_right"];
+      };
+    };
     editor = {
       auto-format = true;
       # bufferline = "never";

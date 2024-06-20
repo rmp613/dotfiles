@@ -1,6 +1,7 @@
 {
   d.shell.aliases = {
     j = "__zoxide_zi";
+    z = "__zoxide_zi";
   };
 
   programs.zoxide = {

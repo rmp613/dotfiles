@@ -9,6 +9,7 @@
     ./fzf.nix
     ./gh.nix
     ./jq.nix
+    ./wget.nix
     ./lsd.nix
     # ./kubectl.nix
     ./localrc.nix

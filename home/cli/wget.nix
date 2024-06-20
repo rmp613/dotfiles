@@ -1,0 +1,6 @@
+
+{
+  programs.wget = {
+    enable = true;
+  };
+}
