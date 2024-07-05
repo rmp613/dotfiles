@@ -13,6 +13,8 @@
     fd
     file
     fzf
+    wget
+    broot
     gcc
     git
     gnumake

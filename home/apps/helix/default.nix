@@ -19,15 +19,15 @@ let
         # del = "delete_char_forward";
       };
       insert = {
-        down = ["normal_mode" "move_line_down"];
-        up = ["normal_mode" "move_line_up"];
-        left = ["normal_mode" "move_char_left"];
-        right = ["normal_mode" "move_char_right"];
+        # down = ["normal_mode" "move_line_down"];
+        # up = ["normal_mode" "move_line_up"];
+        # left = ["normal_mode" "move_char_left"];
+        # right = ["normal_mode" "move_char_right"];
       };
     };
     editor = {
       auto-format = true;
-      # bufferline = "never";
+      bufferline = "always";
       color-modes = true;
       cursorline = true;
       indent-guides.render = true;
@@ -69,7 +69,6 @@ in
     ./lua.nix
     ./nix.nix
     # ./prettier.nix
-    ./biome.nix
     ./prisma.nix
     ./typescript.nix
   ];
