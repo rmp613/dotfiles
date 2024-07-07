@@ -81,11 +81,21 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.helix = {
-      enable = true;
-      settings = settings;
+    xdg.mime.defaultApplications = {
+      "application/javascript" = "Helix.desktop"; 
     };
+    programs = {
+      helix = {
+        enable = true;
+        settings = settings;
+        extraPackages = with pkgs; [helix-gpt];
+      };
 
+      helix-gpt = {
+        enable = true;
+      };
+    };
+    
     d.shell = {
       variables = {
         EDITOR = "hx";

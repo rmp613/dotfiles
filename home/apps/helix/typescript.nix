@@ -13,7 +13,6 @@ let
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
       "biome"
-      # "eslint"
     ];
   };
 
@@ -24,10 +23,12 @@ let
     then "${typescript-language-server}/bin/typescript-language-server"
     else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
 
+  biomeCommand = "./node_modules/@biomejs/biome/bin/biome";
+
   biomeCfg = ext: {
     # so nix only has 1.7.3 as latest - we use local 
     # todo: add package manager detection?
-    command = "type -q pnpm biome && pnpm biome || ${biomePkg}/bin/biome";
+    command = biomeCommand;
     args = [ "--use-server" "--stdin-file-path=file.${ext}" ];
   };
 in
@@ -75,13 +76,13 @@ in
       })
       (cfg // {
         name = "javascript";
-        formatter = biomeCfg "javascript";
+        formatter = biomeCfg "js";
       })
     ];
 
     language-server = {
       biome = {
-        command = "biome";
+        command = biomeCommand;
         args = [ "lsp-proxy" ];
       };
       typescript-language-server.command = lspBinPath "typescript";
