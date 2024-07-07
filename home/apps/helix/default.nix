@@ -81,8 +81,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    xdg.mime.defaultApplications = {
+    xdg.mimeApps.defaultApplications = {
       "application/javascript" = "Helix.desktop"; 
+      "application/json" = "Helix.desktop";
+      "application/yaml" = "Helix.desktop";
+      "text/plain" = "Helix.desktop";
     };
     programs = {
       helix = {
@@ -91,9 +94,9 @@ in
         extraPackages = with pkgs; [helix-gpt];
       };
 
-      helix-gpt = {
-        enable = true;
-      };
+      # helix-gpt = {
+      #   enable = true;
+      # };
     };
     
     d.shell = {
