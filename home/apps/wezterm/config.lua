@@ -1,6 +1,8 @@
 local wz = require("wezterm")
 local act = wz.action
 
+require("scrollback")
+
 local config = {
 	-- Font
 	font = wz.font_with_fallback({
@@ -50,6 +52,13 @@ local config = {
 
 	-- Keybindings
 	-- disable_default_key_bindings = false,
+	keys = {
+		{
+			key = "o",
+			mods = "ALT",
+			action = act.EmitEvent("open-hx-with-scrollback"),
+		},
+	},
 }
 
 -- MacOS overrides

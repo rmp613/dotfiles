@@ -81,6 +81,12 @@ in
   };
 
   config = mkIf cfg.enable {
+    # xdg.mimeApps.associationsAdded = {
+    #   "application/javascript" = "Helix.desktop"; 
+    #   "application/json" = "Helix.desktop";
+    #   "application/yaml" = "Helix.desktop";
+    #   "text/plain" = "Helix.desktop";
+    # };
     xdg.mimeApps.defaultApplications = {
       "application/javascript" = "Helix.desktop"; 
       "application/json" = "Helix.desktop";

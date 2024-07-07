@@ -1,7 +1,8 @@
-{ config, pkgs, lib, user, ... }:
+{ pkgs, lib, ... }:
 
 let
   aliases = {
+    gb = "git checkout -b";
     g = "git status";
     ga = "git add .";
     gcm = "git commit -m";
