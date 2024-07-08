@@ -29,7 +29,7 @@ let
     # so nix only has 1.7.3 as latest - we use local 
     # todo: add package manager detection?
     command = biomeCommand;
-    args = [ "--use-server" "--stdin-file-path=file.${ext}" ];
+    args = [ "format" "--use-server" "--stdin-file-path=file.${ext}" ];
   };
 in
 
