@@ -2,7 +2,8 @@
 
 let
   biomePkg = pkgs.biome;
-
+  helix-gpt = pkgs.helix-gpt;
+  helixBinPath = "${helix-gpt}/bin/helix-gpt";
   cfg = {
     indent = {
       tab-width = 2;
@@ -13,6 +14,7 @@ let
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
       "biome"
+      "gpt"
     ];
   };
 
@@ -38,7 +40,7 @@ in
     typescript-language-server
     vscode-langservers-extracted
     biomePkg
-  ];
+   ];
 
   programs.helix.languages = {
     language = [
@@ -81,6 +83,7 @@ in
     ];
 
     language-server = {
+      gpt.command = helixBinPath;
       biome = {
         command = biomeCommand;
         args = [ "lsp-proxy" ];
