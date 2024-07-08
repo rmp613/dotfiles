@@ -85,7 +85,7 @@ in
         command = biomeCommand;
         args = [ "lsp-proxy" ];
       };
-      typescript-language-server.command = lspBinPath "typescript";
+      typescript-language-server = { command = lspBinPath "typescript"; args = [ "--stdio" ]; config = { maxTsServerMemory = 8000; }; };
       vscode-css-language-server.command = lspBinPath "css";
       vscode-html-language-server.command = lspBinPath "html";
       vscode-json-language-server.command = lspBinPath "json";
