@@ -33,10 +33,13 @@ let
       indent-guides.render = true;
       line-number = "relative";
       soft-wrap.enable = true;
-
+      file-picker = {
+        hidden = false;
+      };
       # FIXME: remove once https://github.com/helix-editor/helix/issues/1475 is fixed
       # auto-info = false;
 
+      lsp = {};
       cursor-shape = {
         insert = "bar";
         normal = "block";
@@ -88,7 +91,7 @@ in
     #   "text/plain" = "Helix.desktop";
     # };
     xdg.mimeApps.defaultApplications = {
-      "application/javascript" = "Helix.desktop"; 
+      "application/javascript" = "Helix.desktop";
       "application/json" = "Helix.desktop";
       "application/yaml" = "Helix.desktop";
       "text/plain" = "Helix.desktop";
@@ -97,14 +100,14 @@ in
       helix = {
         enable = true;
         settings = settings;
-        extraPackages = with pkgs; [helix-gpt];
+        extraPackages = with pkgs; [ helix-gpt ];
       };
 
       # helix-gpt = {
       #   enable = true;
       # };
     };
-    
+
     d.shell = {
       variables = {
         EDITOR = "hx";
