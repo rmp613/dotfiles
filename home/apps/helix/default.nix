@@ -14,7 +14,9 @@ let
     keys = {
       normal = {
         space.F = "file_picker_in_current_buffer_directory";
-        space.W = ":q";
+        space.W = ":quit";
+        "C-s" = ":write";
+        "C-w" = ":buffer-close";
         "C-d" = ["half_page_down" "goto_window_center"];
         "C-u" = ["half_page_up" "goto_window_center"];        # backspace = "delete_char_backward";
         # del = "delete_char_forward";

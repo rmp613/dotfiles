@@ -20,6 +20,10 @@
 
       cmd_duration = {
         format = "[$duration]($style)";
+        show_notifications = true;
+      };
+      time = {
+        disabled = false;
       };
 
       directory = {
@@ -35,7 +39,7 @@
         pure_msg = "pure ";
       };
 
-       aws.disabled = true;
+      aws.disabled = true;
       azure.disabled = true;
       buf.disabled = true;
       bun.disabled = true;
@@ -85,7 +89,7 @@
       swift.disabled = true;
       terraform.disabled = true;
       vagrant.disabled = true;
-      zig.disabled = true; 
+      zig.disabled = true;
     };
   };
 }
