@@ -27,6 +27,7 @@
     fenix.inputs.nixpkgs.follows = "stable";
     helix.url = "github:helix-editor/helix";
 
+    nixpkgs-working-bun.url = "github:nixos/nixpkgs/9e58aca561e18f5197029926db8dbde1738a2ff5";
     # helix.url = "github:helix-editor/helix";
     # helix.inputs.nixpkgs.follows = "stable";
   };
@@ -42,6 +43,7 @@
     , vscode-extensions
     , fenix
     , helix
+    , nixpkgs-working-bun
     , ...
     } @ inputs:
     let

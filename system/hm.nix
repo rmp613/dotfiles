@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.d.hm;
+  # nixpkgs-working-bun = inputs.nixpkgs-working-bun.legacyPackages.${config.system}.bun;
 in
 
 {
@@ -26,7 +27,7 @@ in
       backupFileExtension = "backup";
 
       extraSpecialArgs = {
-        inherit version user theme;
+        inherit version user theme; # nixpkgs-working-bun;
       };
 
       users.${user} = {

@@ -2,12 +2,14 @@
 
 let
   biomePkg = pkgs.biome;
-  helix-gpt = pkgs.helix-gpt;
-  helixGptBinPath = "${helix-gpt}/bin/helix-gpt";
-  helixGptCfg = {
-    command = helixGptBinPath;
-    args = ["--handler" "copilot" ];
-  };
+  # helix-gpt = pkgs.helix-gpt.override {
+  #   bun = nixpkgs-working-bun;
+  # };
+  # helixGptBinPath = "${helix-gpt}/bin/helix-gpt";
+  # helixGptCfg = {
+  #   command = helixGptBinPath;
+  #   args = [ "--handler" "copilot" "--logFile"  "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
+  # };
   cfg = {
     indent = {
       tab-width = 2;
@@ -17,8 +19,8 @@ let
     auto-format = true;
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
-      "biome"
       "gpt"
+      "biome"
     ];
   };
 
@@ -44,7 +46,8 @@ in
     typescript-language-server
     vscode-langservers-extracted
     biomePkg
-   ];
+    pkgs.nodejs_22
+  ];
 
   programs.helix.languages = {
     language = [
@@ -70,29 +73,33 @@ in
       })
       (cfg // {
         name = "tsx";
+        language-id = "typescriptreact";
         formatter = biomeCfg "tsx";
       })
       (cfg // {
         name = "typescript";
+        language-id = "typescript";
         formatter = biomeCfg "ts";
       })
       (cfg // {
         name = "jsx";
+        language-id = "javascriptreact";
         formatter = biomeCfg "jsx";
       })
       (cfg // {
         name = "javascript";
+        language-id = "javascript";
         formatter = biomeCfg "js";
       })
     ];
 
     language-server = {
-      gpt = helixGptCfg;
+      # gpt = helixGptCfg;
       biome = {
         command = biomeCommand;
         args = [ "lsp-proxy" ];
       };
-      typescript-language-server = { command = lspBinPath "typescript"; args = [ "--stdio" ]; config = { maxTsServerMemory = 8000; }; };
+      typescript-language-server = { command = lspBinPath "typescript"; config = { maxTsServerMemory = 8000; }; };
       vscode-css-language-server.command = lspBinPath "css";
       vscode-html-language-server.command = lspBinPath "html";
       vscode-json-language-server.command = lspBinPath "json";
