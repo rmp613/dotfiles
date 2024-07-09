@@ -61,9 +61,9 @@ in
               end
             '') sources)}
 
-            if test -f ${copilotApiKeyFilePath}
+            if test -e ${copilotApiKeyFilePath}
                 echo "setting copilot api key"
-                export COPILOT_API_KEY=$(cat ${copilotApiKeyFilePath})
+                export COPILOT_API_KEY="$(cat ${copilotApiKeyFilePath})"
             else
               echo "no copilot key found in ${copilotApiKeyFilePath}"
             end
