@@ -3,7 +3,11 @@
 let
   biomePkg = pkgs.biome;
   helix-gpt = pkgs.helix-gpt;
-  helixBinPath = "${helix-gpt}/bin/helix-gpt";
+  helixGptBinPath = "${helix-gpt}/bin/helix-gpt";
+  helixGptCfg = {
+    command = helixGptBinPath;
+    args = ["--handler" "copilot" ];
+  };
   cfg = {
     indent = {
       tab-width = 2;
@@ -83,7 +87,7 @@ in
     ];
 
     language-server = {
-      gpt.command = helixBinPath;
+      gpt = helixGptCfg;
       biome = {
         command = biomeCommand;
         args = [ "lsp-proxy" ];

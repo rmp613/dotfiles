@@ -5,6 +5,9 @@ with lib;
 let
   cfg = config.d.programs.fish;
 
+  homeDirectory = (if pkgs.stdenv.isDarwin then "/Users/" else "/home/")
+    + "riordan";
+  copilotApiKeyFilePath = "${homeDirectory}/.config/copilot";
   sources = [
     # https://github.com/LnL7/nix-darwin#install
     "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish"
@@ -57,6 +60,13 @@ in
                 source ${path}
               end
             '') sources)}
+
+            if test -f ${copilotApiKeyFilePath}
+                echo "setting copilot api key"
+                export COPILOT_API_KEY=$(cat ${copilotApiKeyFilePath})
+            else
+              echo "no copilot key found in ${copilotApiKeyFilePath}"
+            end
           '';
         };
       }
