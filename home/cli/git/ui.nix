@@ -14,6 +14,10 @@
       git.paging.colorArg = "always";
     };
   };
+  # not a thing
+  # programs.tig = {
+  #   enable = true;
+  # };
   programs.gitui = {
     enable = true;
 # waiting on https://github.com/extrawurst/gitui/issues/2286

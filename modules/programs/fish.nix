@@ -62,7 +62,6 @@ in
             '') sources)}
 
             if test -e ${copilotApiKeyFilePath}
-                echo "setting copilot api key"
                 set -gx COPILOT_API_KEY "$(cat ${copilotApiKeyFilePath})"
             else
               echo "no copilot key found in ${copilotApiKeyFilePath}"

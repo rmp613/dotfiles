@@ -19,16 +19,19 @@ let
     auto-format = true;
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
-      "gpt"
+      # "gpt"
       "biome"
     ];
   };
-
+  # doesn't exist yet
+  # vtsls = pkgs.nodePackages."@vtsls/language-server";
   lspBinPath = lang:
     with pkgs.nodePackages;
 
     if lang == "typescript"
-    then "${typescript-language-server}/bin/typescript-language-server"
+    # then "${typescript-language-server}/bin/typescript-language-server"
+    # trial vtsls instead
+    then "pnpm"
     else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
 
   biomeCommand = "./node_modules/@biomejs/biome/bin/biome";
@@ -46,7 +49,7 @@ in
     typescript-language-server
     vscode-langservers-extracted
     biomePkg
-    pkgs.nodejs_22
+    # pkgs.nodejs_22
   ];
 
   programs.helix.languages = {
@@ -73,22 +76,22 @@ in
       })
       (cfg // {
         name = "tsx";
-        language-id = "typescriptreact";
+        # language-id = "typescriptreact";
         formatter = biomeCfg "tsx";
       })
       (cfg // {
         name = "typescript";
-        language-id = "typescript";
+        # language-id = "typescript";
         formatter = biomeCfg "ts";
       })
       (cfg // {
         name = "jsx";
-        language-id = "javascriptreact";
+        # language-id = "javascriptreact";
         formatter = biomeCfg "jsx";
       })
       (cfg // {
         name = "javascript";
-        language-id = "javascript";
+        # language-id = "javascript";
         formatter = biomeCfg "js";
       })
     ];
@@ -99,7 +102,10 @@ in
         command = biomeCommand;
         args = [ "lsp-proxy" ];
       };
-      typescript-language-server = { command = lspBinPath "typescript"; config = { maxTsServerMemory = 8000; }; };
+      # would use args = [ "--stdio" ]
+      # but this error happens https://github.com/denoland/deno/issues/23133
+      typescript-language-server = { command = lspBinPath "typescript"; args = [ "vtsls" "--stdio" ]; config = { vtsls.autoUseWorkspaceTsdk = true; typescript = { tsserver = { maxTsServerMemory = 8192; experimental = { enableProjectDiagnostics = true; }; }; }; }; };
+      # typescript-language-server = { command = lspBinPath "typescript"; config = { maxTsServerMemory = 8192; experimental = { enableProjectDiagnostics = true; }; }; };
       vscode-css-language-server.command = lspBinPath "css";
       vscode-html-language-server.command = lspBinPath "html";
       vscode-json-language-server.command = lspBinPath "json";

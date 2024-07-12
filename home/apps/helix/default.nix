@@ -15,10 +15,20 @@ let
       normal = {
         space.F = "file_picker_in_current_buffer_directory";
         space.W = ":quit";
+        space."," = {
+          # b = ":sh helix-wezterm.sh blame";
+          e = ":sh helix-wezterm.sh explorer";
+          f = ":sh helix-wezterm.sh fzf";
+          g = ":sh helix-wezterm.sh lazygit";
+          # o = ":sh helix-wezterm.sh open";
+          t = ":sh helix-wezterm.sh term";
+          # r = ":sh helix-wezterm.sh run";
+          # t = ":sh helix-wezterm.sh test";
+        };
         "C-s" = ":write";
         "C-w" = ":buffer-close";
-        "C-d" = ["half_page_down" "goto_window_center"];
-        "C-u" = ["half_page_up" "goto_window_center"];        # backspace = "delete_char_backward";
+        "C-d" = [ "half_page_down" "goto_window_center" ];
+        "C-u" = [ "half_page_up" "goto_window_center" ]; # backspace = "delete_char_backward";
         # del = "delete_char_forward";
       };
       insert = {
@@ -42,7 +52,7 @@ let
       # FIXME: remove once https://github.com/helix-editor/helix/issues/1475 is fixed
       # auto-info = false;
 
-      lsp = {};
+      lsp = { };
       cursor-shape = {
         insert = "bar";
         normal = "block";

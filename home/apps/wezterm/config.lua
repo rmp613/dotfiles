@@ -1,28 +1,88 @@
 local wz = require("wezterm")
 local act = wz.action
-local io = require 'io'
-local os = require 'os'
+local io = require("io")
+local os = require("os")
 
-wz.on('open-hx-with-scrollback', function(window, pane)
-  local scrollback_text = pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
+local function is_hx(pane)
+	local process_info = pane:get_foreground_process_info()
+	local process_name = process_info and process_info.name
 
-  local filename = os.tmpname()
-  local f = io.open(filename, 'w+')
-  f:write(scrollback_text)
-  f:flush()
-  f:close()
+	return process_name == "hx"
+end
 
-  -- Helix (and other Homebrew-installed things) aren't in WezTerm's pretty minimal PATH,
-  -- so we instead spawn the default shell and manually open hx from there.
-  local _, new_pane, _ = window:mux_window():spawn_tab {}
-  new_pane:send_text(wz.shell_join_args{'hx', filename} .. ' ; exit\n')
-  -- wz.mux_window.window.set_title("Scrollback for "..pane.get_title())
-  new_pane:send_text('ge') -- goto end of file
+local function find_hx_pane(tab)
+	for _, pane in ipairs(tab:panes()) do
+		if is_hx(pane) then
+			return pane
+		end
+	end
+end
 
-  -- Wait "enough" time for the editor to read the file before removing it.
-  -- (Reading the file is asynchronous and not awaitable.)
-  wz.sleep_ms(1000)
-  os.remove(filename)
+local direction_keys = {
+	Left = "c",
+	Down = "i",
+	Up = "e",
+	Right = "a",
+	-- reverse lookup
+	c = "Left",
+	i = "Down",
+	e = "Up",
+	a = "Right",
+}
+
+local function split_nav(resize_or_move, key)
+	return {
+		key = key,
+		mods = resize_or_move == "resize" and "META" or "CTRL",
+		action = wz.action_callback(function(win, pane)
+			if is_hx(pane) then
+				-- pass the keys through to vim/nvim
+				win:perform_action({
+					SendKey = {
+						key = key,
+						mods = resize_or_move == "resize" and "META" or "CTRL",
+					},
+				}, pane)
+			else
+				if resize_or_move == "resize" then
+					win:perform_action(
+						{ AdjustPaneSize = { direction_keys[key], 3 } },
+						pane
+					)
+				else
+					win:perform_action(
+						{ ActivatePaneDirection = direction_keys[key] },
+						pane
+					)
+				end
+			end
+		end),
+	}
+end
+-- local keys = {}
+
+wz.on("open-hx-with-scrollback", function(window, pane)
+	local scrollback_text =
+		pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
+
+	local filename = os.tmpname()
+	local f = io.open(filename, "w+")
+	if f ~= nil then
+		f:write(scrollback_text)
+		f:flush()
+		f:close()
+		-- Helix (and other Homebrew-installed things) aren't in WezTerm's pretty minimal PATH,
+		-- so we instead spawn the default shell and manually open hx from there.
+		local _, new_pane, _ = window:mux_window():spawn_tab({})
+		new_pane:send_text(wz.shell_join_args({ "hx", filename }) .. " ; exit\n")
+		-- wz.mux_window.window.set_title("Scrollback for "..pane.get_title())
+		new_pane:send_text("ge") -- goto end of file
+
+		-- Wait "enough" time for the editor to read the file before removing it.
+		-- (Reading the file is asynchronous and not awaitable.)
+		wz.sleep_ms(1000)
+		os.remove(filename)
+	end
 end)
 
 local config = {
@@ -59,8 +119,8 @@ local config = {
 	-- Window
 	enable_wayland = false,
 	window_padding = {
-		left = "0cell",
-		right = "0cell",
+		left = "1cell",
+		right = "1cell",
 		top = "0cell",
 		bottom = "0cell",
 	},
@@ -77,8 +137,83 @@ local config = {
 	keys = {
 		{
 			key = "o",
-			mods = "ALT",
+			mods = "CTRL|ALT",
 			action = act.EmitEvent("open-hx-with-scrollback"),
+		},
+
+		-- move between split panes
+		split_nav("move", "h"),
+		split_nav("move", "j"),
+		split_nav("move", "k"),
+		split_nav("move", "l"),
+
+		-- resize panes
+		split_nav("resize", "h"),
+		split_nav("resize", "j"),
+		split_nav("resize", "k"),
+		split_nav("resize", "l"),
+
+		-- split panes
+		{
+			key = "-",
+			mods = "META",
+			action = wz.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		},
+		{
+			key = "\\",
+			mods = "META",
+			action = wz.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		},
+
+		-- Rename tab
+		{
+			key = "r",
+			mods = "CMD",
+			action = wz.action.PromptInputLine({
+				description = "Enter new name for tab",
+				action = wz.action_callback(function(window, _, line)
+					if line then
+						window:active_tab():set_title(line)
+					end
+				end),
+			}),
+		},
+
+		-- Toggle zoom for neovim
+		{
+			key = ",",
+			mods = "CMD",
+			action = wz.action_callback(function(window, pane)
+				local tab = window:active_tab()
+
+				-- Open pane below if current pane is vim
+				if is_hx(pane) then
+					if (#tab:panes()) == 1 then
+						-- Open pane below if when there is only one pane and it is vim
+						pane:split({ direction = "Bottom" })
+					else
+						-- Send `CTRL-; to vim`, navigate to bottom pane from vim
+						window:perform_action({
+							SendKey = { key = ",", mods = "CMD" },
+						}, pane)
+					end
+					return
+				end
+
+				-- Zoom to vim pane if it exists
+				local vim_pane = find_hx_pane(tab)
+				if vim_pane then
+					vim_pane:activate()
+					tab:set_zoomed(true)
+				end
+			end),
+		},
+
+		-- Workspaces manager
+		{
+			key = "W",
+			mods = "CMD|SHIFT",
+			action = wz.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
 		},
 	},
 }
