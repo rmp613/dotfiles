@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     helix
+    neovim
     wezterm
 
     # Utils

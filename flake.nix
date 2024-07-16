@@ -26,10 +26,8 @@
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "stable";
     helix.url = "github:helix-editor/helix";
-
-    nixpkgs-working-bun.url = "github:nixos/nixpkgs/9e58aca561e18f5197029926db8dbde1738a2ff5";
-    # helix.url = "github:helix-editor/helix";
-    # helix.inputs.nixpkgs.follows = "stable";
+    # todo: use real version once this merges
+    # helix-gpt.url = "github:SilverCoder/helix-gpt/727a26e6499aefe6620a93a8c230aa9cb671b1d5";
   };
 
   outputs =
@@ -43,13 +41,12 @@
     , vscode-extensions
     , fenix
     , helix
-    , nixpkgs-working-bun
     , ...
     } @ inputs:
     let
       inherit (utils.lib) mkFlake;
       inherit (stable.lib.filesystem) listFilesRecursive;
-      inherit (stable.lib) listToAttrs hasSuffix removeSuffix removePrefix;
+      inherit (stable.lib) listToAttrs hasSuffix removeSuffix;
 
       nixosConfig = {
         system = "x86_64-linux";

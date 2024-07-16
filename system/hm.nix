@@ -1,10 +1,9 @@
-{ config, options, inputs, lib, version, user, theme, ... }:
+{ config, inputs, lib, version, user, theme, ... }:
 
 with lib;
 
 let
   cfg = config.d.hm;
-  # nixpkgs-working-bun = inputs.nixpkgs-working-bun.legacyPackages.${config.system}.bun;
 in
 
 {
@@ -27,7 +26,7 @@ in
       backupFileExtension = "backup";
 
       extraSpecialArgs = {
-        inherit version user theme; # nixpkgs-working-bun;
+        inherit version user theme;
       };
 
       users.${user} = {

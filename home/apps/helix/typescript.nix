@@ -2,10 +2,7 @@
 
 let
   biomePkg = pkgs.biome;
-  # helix-gpt = pkgs.helix-gpt.override {
-  #   bun = nixpkgs-working-bun;
-  # };
-  # helixGptBinPath = "${helix-gpt}/bin/helix-gpt";
+  # helixGptPath = helix-gpt;
   # helixGptCfg = {
   #   command = helixGptBinPath;
   #   args = [ "--handler" "copilot" "--logFile"  "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
@@ -29,10 +26,11 @@ let
     with pkgs.nodePackages;
 
     if lang == "typescript"
-    # then "${typescript-language-server}/bin/typescript-language-server"
-    # trial vtsls instead
-    then "pnpm"
+    then "${typescript-language-server}/bin/typescript-language-server"
     else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
+  # trial vtsls instead
+  # then "pnpm"
+  # else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
 
   biomeCommand = "./node_modules/@biomejs/biome/bin/biome";
 
@@ -97,15 +95,18 @@ in
     ];
 
     language-server = {
-      # gpt = helixGptCfg;
+      # gpt = {
+      #   command = "helix-gpt";
+      #   args = [ "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/~/.logs/helix-gpt.log" ];
+      # };
       biome = {
         command = biomeCommand;
         args = [ "lsp-proxy" ];
       };
       # would use args = [ "--stdio" ]
       # but this error happens https://github.com/denoland/deno/issues/23133
-      typescript-language-server = { command = lspBinPath "typescript"; args = [ "vtsls" "--stdio" ]; config = { vtsls.autoUseWorkspaceTsdk = true; typescript = { tsserver = { maxTsServerMemory = 8192; experimental = { enableProjectDiagnostics = true; }; }; }; }; };
-      # typescript-language-server = { command = lspBinPath "typescript"; config = { maxTsServerMemory = 8192; experimental = { enableProjectDiagnostics = true; }; }; };
+      # typescript-language-server = { command = lspBinPath "typescript"; args = [ "vtsls" "--stdio" ]; config = { vtsls.autoUseWorkspaceTsdk = true; typescript = { tsserver = { maxTsServerMemory = 8192; experimental = { enableProjectDiagnostics = true; }; }; }; }; };
+      typescript-language-server = { command = lspBinPath "typescript"; config = { maxTsServerMemory = 8192; experimental = { enableProjectDiagnostics = true; }; }; };
       vscode-css-language-server.command = lspBinPath "css";
       vscode-html-language-server.command = lspBinPath "html";
       vscode-json-language-server.command = lspBinPath "json";

@@ -27,15 +27,15 @@ let
         };
         "C-s" = ":write";
         "C-w" = ":buffer-close";
-        "C-d" = [ "half_page_down" "goto_window_center" ];
-        "C-u" = [ "half_page_up" "goto_window_center" ]; # backspace = "delete_char_backward";
+        # "C-d" = [ "half_page_down" "goto_window_center" ];
+        # "C-u" = [ "half_page_up" "goto_window_center" ]; # backspace = "delete_char_backward";
         # del = "delete_char_forward";
       };
       insert = {
-        # down = ["normal_mode" "move_line_down"];
-        # up = ["normal_mode" "move_line_up"];
-        # left = ["normal_mode" "move_char_left"];
-        # right = ["normal_mode" "move_char_right"];
+        down = ["normal_mode" "move_line_down"];
+        up = ["normal_mode" "move_line_up"];
+        left = ["normal_mode" "move_char_left"];
+        right = ["normal_mode" "move_char_right"];
       };
     };
     editor = {
@@ -113,7 +113,6 @@ in
       helix = {
         enable = true;
         settings = settings;
-        extraPackages = with pkgs; [ helix-gpt ];
       };
 
       # helix-gpt = {

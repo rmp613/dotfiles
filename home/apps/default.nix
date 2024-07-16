@@ -4,7 +4,7 @@
     # ./rofi
     # ./vscode
     ./wezterm
-
+    ./nvim
     # ./1password.nix
     # ./browser.nix
     # ./flameshot.nix

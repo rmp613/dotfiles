@@ -40,6 +40,7 @@ let
     "...." = "cd ../../..";
 
     p = "pnpm";
+    pi = "pnpm i";
     clear = "tput reset";
     grep = "rg";
     mkdir = "mkdir -p";
