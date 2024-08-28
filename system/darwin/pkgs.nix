@@ -12,6 +12,10 @@
       Slack = 803453959;
       Bitwarden = 1352778147;
     };
+    brews = [
+      # "CTRLSpice/tap/otel-desktop-viewer"
+      "ymtdzzz/tap/otel-tui"
+    ];
     casks = [
       # https://github.com/NixOS/nixpkgs/issues/254944
       # "1password"

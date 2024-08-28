@@ -31,12 +31,12 @@ let
         # "C-u" = [ "half_page_up" "goto_window_center" ]; # backspace = "delete_char_backward";
         # del = "delete_char_forward";
       };
-      insert = {
-        down = ["normal_mode" "move_line_down"];
-        up = ["normal_mode" "move_line_up"];
-        left = ["normal_mode" "move_char_left"];
-        right = ["normal_mode" "move_char_right"];
-      };
+      # insert = {
+      #   down = ["normal_mode" "move_line_down"];
+      #   up = ["normal_mode" "move_line_up"];
+      #   left = ["normal_mode" "move_char_left"];
+      #   right = ["normal_mode" "move_char_right"];
+      # };
     };
     editor = {
       auto-format = true;
@@ -52,6 +52,10 @@ let
       # FIXME: remove once https://github.com/helix-editor/helix/issues/1475 is fixed
       # auto-info = false;
 
+      inline-diagnostics = {
+        cursor-line = "hint";
+        other-lines = "error";
+      };
       lsp = { };
       cursor-shape = {
         insert = "bar";
