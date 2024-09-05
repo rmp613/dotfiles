@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   biomePkg = pkgs.biome;
@@ -16,7 +16,7 @@ let
     auto-format = true;
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
-      # "gpt"
+      "gpt"
       "biome"
     ];
   };
@@ -95,10 +95,10 @@ in
     ];
 
     language-server = {
-      # gpt = {
-      #   command = "helix-gpt";
-      #   args = [ "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/~/.logs/helix-gpt.log" ];
-      # };
+      gpt = {
+        command = "helix-gpt";
+        args = [ "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/~/.logs/helix-gpt.log" ];
+      };
       biome = {
         command = biomeCommand;
         args = [ "lsp-proxy" ];
