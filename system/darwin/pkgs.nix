@@ -14,7 +14,7 @@
     };
     brews = [
       # "CTRLSpice/tap/otel-desktop-viewer"
-      "ymtdzzz/tap/otel-tui"
+      # "ymtdzzz/tap/otel-tui"
     ];
     casks = [
       # "gdu"

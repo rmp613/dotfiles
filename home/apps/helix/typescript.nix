@@ -97,7 +97,8 @@ in
     language-server = {
       gpt = {
         command = "bun";
-        args = [ "run" "helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/~/.logs/helix-gpt.log" ];
+        # note that we need to manually install this js file currently
+        args = [ "run" "/usr/local/bin/helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
       };
       biome = {
         command = biomeCommand;
