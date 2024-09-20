@@ -40,9 +40,11 @@ let
     };
     editor = {
       auto-format = true;
+      shell = ["fish" "-c"];
       bufferline = "always";
       color-modes = true;
       cursorline = true;
+      auto-pairs = false;
       indent-guides.render = true;
       line-number = "relative";
       soft-wrap.enable = true;
