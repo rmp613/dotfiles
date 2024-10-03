@@ -27,8 +27,10 @@ let
         };
         "C-s" = ":write";
         "C-w" = ":buffer-close";
-        # "C-d" = [ "half_page_down" "goto_window_center" ];
-        # "C-u" = [ "half_page_up" "goto_window_center" ]; # backspace = "delete_char_backward";
+        "C-S-r" = ":lsp-restart";
+        "C-S-s" = ":write-all";
+        "C-S-w" = ":buffer-close-others";
+        "C-A-r" = ":reload-all";
         # del = "delete_char_forward";
       };
       # insert = {

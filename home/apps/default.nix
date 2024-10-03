@@ -13,6 +13,7 @@
     # ./obs-studio.nix
     # ./obsidian.nix
     ./slack.nix
+    ./serpl.nix
     ./zoom.nix
   ];
 }
