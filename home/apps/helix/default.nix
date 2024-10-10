@@ -31,18 +31,25 @@ let
         "C-S-s" = ":write-all";
         "C-S-w" = ":buffer-close-others";
         # "C-A-r" = ":reload-all";
-        # del = "delete_char_forward";
+        minus = {
+          "minus" = { label = "Select sub word"; command = [ "move_prev_sub_word_start" "move_next_sub_word_end" ]; };
+          "w" = "move_next_sub_word_start";
+          "b" = "move_prev_sub_word_start";
+          "e" = "move_next_sub_word_end";
+        };
       };
-      # insert = {
-      #   down = ["normal_mode" "move_line_down"];
-      #   up = ["normal_mode" "move_line_up"];
-      #   left = ["normal_mode" "move_char_left"];
-      #   right = ["normal_mode" "move_char_right"];
-      # };
+      select = {
+        minus = {
+          "minus" = { label = "Select sub word"; command = [ "extend_prev_sub_word_start" "extend_next_sub_word_end" ]; };
+          "w" = "extend_next_sub_word_start";
+          "b" = "extend_prev_sub_word_start";
+          "e" = "extend_next_sub_word_end";
+        };
+      };
     };
     editor = {
       auto-format = true;
-      shell = ["fish" "-c"];
+      shell = [ "fish" "-c" ];
       bufferline = "always";
       jump-label-alphabet = "acdefhijklmnorstux";
       color-modes = true;
