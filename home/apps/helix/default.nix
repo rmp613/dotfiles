@@ -23,28 +23,32 @@ let
           # o = ":sh helix-wezterm.sh open";
           t = ":sh helix-wezterm.sh term";
           r = ":lsp-restart";
+          a = ":write-all";
+          R = { label = "Reload"; command = [":config-reload" ":lsp-restart" ":reload-all"]; };
           # t = ":sh helix-wezterm.sh test";
         };
         "C-s" = ":write";
         "C-w" = ":buffer-close";
-        "C-S-r" = ":lsp-restart";
-        "C-S-s" = ":write-all";
-        "C-S-w" = ":buffer-close-others";
+        # "C-S-r" = ":lsp-restart";
+        # "C-S-s" = ":write-all";
+        # "C-S-w" = ":buffer-close-others";
         # "C-A-r" = ":reload-all";
-        minus = {
-          "minus" = { label = "Select sub word"; command = [ "move_prev_sub_word_start" "move_next_sub_word_end" ]; };
-          "w" = "move_next_sub_word_start";
-          "b" = "move_prev_sub_word_start";
-          "e" = "move_next_sub_word_end";
-        };
+        # on next release :)
+        # minus = {
+        #   "minus" = { label = "Select sub word"; command = [ "move_prev_sub_word_start" "move_next_sub_word_end" ]; };
+        #   "w" = "move_next_sub_word_start";
+        #   "b" = "move_prev_sub_word_start";
+        #   "e" = "move_next_sub_word_end";
+        # };
       };
       select = {
-        minus = {
-          "minus" = { label = "Select sub word"; command = [ "extend_prev_sub_word_start" "extend_next_sub_word_end" ]; };
-          "w" = "extend_next_sub_word_start";
-          "b" = "extend_prev_sub_word_start";
-          "e" = "extend_next_sub_word_end";
-        };
+        # on next release :)
+        # minus = {
+        #   "minus" = { label = "Select sub word"; command = [ "extend_prev_sub_word_start" "extend_next_sub_word_end" ]; };
+        #   "w" = "extend_next_sub_word_start";
+        #   "b" = "extend_prev_sub_word_start";
+        #   "e" = "extend_next_sub_word_end";
+        # };
       };
     };
     editor = {
