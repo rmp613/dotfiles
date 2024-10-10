@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   biomePkg = pkgs.biome;
@@ -47,7 +47,7 @@ in
   home.packages = with pkgs.nodePackages; [
     typescript-language-server
     vscode-langservers-extracted
-    tailwind-language-server
+    tailwindcss-language-server
     biomePkg
     pkgs.nodejs_22
   ];
