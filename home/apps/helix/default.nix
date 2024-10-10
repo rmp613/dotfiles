@@ -24,7 +24,8 @@ let
           t = ":sh helix-wezterm.sh term";
           r = ":lsp-restart";
           a = ":write-all";
-          R = { label = "Reload"; command = [":config-reload" ":lsp-restart" ":reload-all"]; };
+          R = [ ":config-reload" ":lsp-restart" ":reload-all" ];
+          # R = { label = "Reload"; command = [":config-reload" ":lsp-restart" ":reload-all"]; };
           # t = ":sh helix-wezterm.sh test";
         };
         "C-s" = ":write";
