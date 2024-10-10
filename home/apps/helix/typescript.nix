@@ -2,6 +2,7 @@
 
 let
   biomePkg = pkgs.biome;
+  tailwindPkg = pkgs.nodePackages."@tailwindcss/language-server";
   # helixGptPath = helix-gpt;
   # helixGptCfg = {
   #   command = helixGptBinPath;
@@ -47,8 +48,8 @@ in
   home.packages = with pkgs.nodePackages; [
     typescript-language-server
     vscode-langservers-extracted
+    tailwindPkg
     # tailwindcss-language-server
-    "@tailwindcss/language-server"
     biomePkg
     pkgs.nodejs_22
   ];
