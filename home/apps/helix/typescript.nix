@@ -47,7 +47,8 @@ in
   home.packages = with pkgs.nodePackages; [
     typescript-language-server
     vscode-langservers-extracted
-    tailwindcss-language-server
+    # tailwindcss-language-server
+    "@tailwindcss/language-server"
     biomePkg
     pkgs.nodejs_22
   ];
