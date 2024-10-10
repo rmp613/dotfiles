@@ -22,7 +22,7 @@ let
           g = ":sh helix-wezterm.sh lazygit";
           # o = ":sh helix-wezterm.sh open";
           t = ":sh helix-wezterm.sh term";
-          # r = ":sh helix-wezterm.sh run";
+          r = ":lsp-restart";
           # t = ":sh helix-wezterm.sh test";
         };
         "C-s" = ":write";
@@ -30,7 +30,7 @@ let
         "C-S-r" = ":lsp-restart";
         "C-S-s" = ":write-all";
         "C-S-w" = ":buffer-close-others";
-        "C-A-r" = ":reload-all";
+        # "C-A-r" = ":reload-all";
         # del = "delete_char_forward";
       };
       # insert = {
@@ -44,7 +44,9 @@ let
       auto-format = true;
       shell = ["fish" "-c"];
       bufferline = "always";
+      jump-label-alphabet = "acdefhijklmnorstux";
       color-modes = true;
+      completion-replace = true;
       cursorline = true;
       auto-pairs = false;
       indent-guides.render = true;

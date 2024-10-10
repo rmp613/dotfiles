@@ -16,7 +16,8 @@ let
     auto-format = true;
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
-      "gpt"
+      # "gpt"
+      "tailwindcss-ls"
       "biome"
     ];
   };
@@ -46,6 +47,7 @@ in
   home.packages = with pkgs.nodePackages; [
     typescript-language-server
     vscode-langservers-extracted
+    tailwind-language-server
     biomePkg
     pkgs.nodejs_22
   ];
@@ -54,20 +56,27 @@ in
     language = [
       (cfg // {
         name = "html";
-        language-servers = [ "vscode-html-language-server" ];
+        language-servers = [
+          "vscode-html-language-server"
+          "tailwindcss-ls"
+        ];
         # formatter = biome "html";
         auto-format = true;
       })
       (cfg // {
         name = "css";
-        language-servers = [ "vscode-css-language-server" ];
+        language-servers = [
+          "vscode-css-language-server"
+        ];
         # formatter = biome "css";
         auto-format = true;
 
       })
       (cfg // {
         name = "json";
-        language-servers = [ "vscode-json-language-server" ];
+        language-servers = [
+          "vscode-json-language-server"
+        ];
         # formatter = biome "json";
         auto-format = true;
 
@@ -95,11 +104,11 @@ in
     ];
 
     language-server = {
-      gpt = {
-        command = "bun";
-        # note that we need to manually install this js file currently
-        args = [ "run" "/usr/local/bin/helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
-      };
+      # gpt = {
+      #   command = "bun";
+      #   # note that we need to manually install this js file currently
+      #   args = [ "run" "/usr/local/bin/helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
+      # };
       biome = {
         command = biomeCommand;
         args = [ "lsp-proxy" ];
@@ -107,6 +116,11 @@ in
       # would use args = [ "--stdio" ]
       # but this error happens https://github.com/denoland/deno/issues/23133
       typescript-language-server = { command = lspBinPath "typescript"; args = [ "vtsls" "--stdio" ]; config = { vtsls.autoUseWorkspaceTsdk = true; typescript = { tsserver = { maxTsServerMemory = 16384; }; }; }; };
+      tailwindcss-ls = {
+        userLanguages = {
+          gleam = "html";
+        };
+      };
       # typescript-language-server = { command = lspBinPath "typescript"; config = { maxTsServerMemory = 16384; experimental = { enableProjectDiagnostics = true; }; }; };
       vscode-css-language-server.command = lspBinPath "css";
       vscode-html-language-server.command = lspBinPath "html";
