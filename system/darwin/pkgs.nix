@@ -26,6 +26,7 @@
       # "raycast"
       # "scroll-reverser"
       # "openscad-snapshot"
+      "exercism"
       "discord"
       # "font-jetbrains-mono"
       # "font-jetbrains-mono-nerd-font"

@@ -58,7 +58,7 @@ let
       bufferline = "always";
       jump-label-alphabet = "acdefhijklmnorstux";
       color-modes = true;
-      completion-replace = true;
+      # completion-replace = true;
       cursorline = true;
       auto-pairs = false;
       indent-guides.render = true;
