@@ -16,6 +16,7 @@
     # Renamed to packages in NixOS 23.11 but lacks darwin support:
     # https://github.com/LnL7/nix-darwin/issues/752
     packages = with pkgs; [
+      exercism
       cascadia-code
       fira-code
       jetbrains-mono
