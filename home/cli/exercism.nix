@@ -1,8 +1,0 @@
-
-{ ... }:
-
-{
-  programs.exercism = {
-    enable = true;
-  };
-}

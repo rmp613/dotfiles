@@ -19,6 +19,7 @@ in
     username = user;
     homeDirectory = lib.mkForce "${homePrefix}/${user}";
     stateVersion = version;
+    packages = with pkgs; [exercism];
   };
 
   xdg.enable = true;

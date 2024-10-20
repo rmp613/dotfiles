@@ -5,7 +5,6 @@
     ./starship
 
     ./aws.nix
-    ./exercism.nix
     ./direnv.nix
     ./fzf.nix
     ./gh.nix
