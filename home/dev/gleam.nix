@@ -7,7 +7,7 @@ let
   # legacyPackages = pkgs.legacyPackages.${system};
   corepackEnable = pkgs.runCommand "corepack-enable" { } ''
     mkdir -p $out/bin
-    ${pkgs.nodejs_20}/bin/corepack enable --install-directory $out/bin
+    ${pkgs.nodejs_22}/bin/corepack enable --install-directory $out/bin
   '';
 in
 {
@@ -20,7 +20,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      nodejs_20
+      nodejs_22
       corepackEnable
       erlang_26
       gleam
