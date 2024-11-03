@@ -17,6 +17,7 @@
     fzf
     wget
     broot
+    yazi
     gcc
     git
     gnumake

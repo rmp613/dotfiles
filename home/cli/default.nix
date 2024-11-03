@@ -17,5 +17,6 @@
     ./terraform.nix
     ./up.nix # helpers to build nix
     ./zoxide.nix
+    ./yazi.nix
   ];
 }
