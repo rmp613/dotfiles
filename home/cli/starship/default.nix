@@ -43,7 +43,6 @@
       aws.disabled = true;
       azure.disabled = true;
       buf.disabled = true;
-      bun.disabled = true;
       c.disabled = true;
       cmake.disabled = true;
       conda.disabled = true;
@@ -55,9 +54,7 @@
       docker_context.disabled = true;
       dotnet.disabled = true;
       elixir.disabled = true;
-      elm.disabled = true;
       env_var.disabled = true;
-      erlang.disabled = true;
       fennel.disabled = true;
       gcloud.disabled = true;
       golang.disabled = true;
@@ -74,7 +71,6 @@
       lua.disabled = true;
       nim.disabled = true;
       nix_shell.disabled = true;
-      nodejs.disabled = true;
       ocaml.disabled = true;
       openstack.disabled = true;
       package.disabled = true;

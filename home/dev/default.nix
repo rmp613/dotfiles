@@ -6,6 +6,7 @@
     ./python.nix
     ./react-native.nix
     ./rust.nix
+    ./gleam.nix
     ./editorconfig.nix
   ];
 
