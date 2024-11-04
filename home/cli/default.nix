@@ -4,6 +4,7 @@
     ./git
     ./starship
 
+    ./rainfrog.nix
     ./aws.nix
     ./direnv.nix
     ./fzf.nix
