@@ -3,7 +3,7 @@
     ./helix
     # ./rofi
     # ./vscode
-    ./wezterm
+    # ./wezterm
     ./nvim
     # ./1password.nix
     # ./browser.nix
@@ -12,6 +12,7 @@
     # ./inkscape.nix
     # ./obs-studio.nix
     # ./obsidian.nix
+    ./warp-terminal.nix
     ./slack.nix
     ./zoom.nix
   ];

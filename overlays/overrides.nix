@@ -14,8 +14,11 @@ channels: final: prev: {
     starship
     wezterm
     zoxide
+    helix-editor
+    rainfrog
 
     # Development
+    gleam
     bun
     nodePackages
     stylua
