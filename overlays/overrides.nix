@@ -16,6 +16,7 @@ channels: final: prev: {
     zoxide
     helix-editor
     rainfrog
+    warp-terminal
 
     # Development
     gleam
