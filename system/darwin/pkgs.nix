@@ -27,6 +27,7 @@
       # "scroll-reverser"
       # "openscad-snapshot"
       "discord"
+      "warp"
       # "font-jetbrains-mono"
       # "font-jetbrains-mono-nerd-font"
       "google-chrome"

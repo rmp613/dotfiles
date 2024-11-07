@@ -12,8 +12,8 @@
     # ./inkscape.nix
     # ./obs-studio.nix
     # ./obsidian.nix
-    ./warp-terminal.nix
-    ./slack.nix
-    ./zoom.nix
+    # ./warp-terminal.nix
+    # ./slack.nix
+    # ./zoom.nix
   ];
 }
