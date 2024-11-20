@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  biomePkg = pkgs.biome;
+  # biomePkg = pkgs.biome;
   tailwindPkg = pkgs.nodePackages."@tailwindcss/language-server";
   # helixGptPath = helix-gpt;
   # helixGptCfg = {
@@ -34,13 +34,13 @@ let
     then "pnpm"
     else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
 
-  biomeCommand = "./node_modules/@biomejs/biome/bin/biome";
+  biomeCommand = "pnpm";
 
   biomeCfg = ext: {
     # so nix only has 1.7.3 as latest - we use local 
     # todo: add package manager detection?
     command = biomeCommand;
-    args = [ "check" "--write" "--use-server" "--stdin-file-path=file.${ext}" ];
+    args = [ "biome" "check" "--write" "--use-server" "--stdin-file-path=file.${ext}" ];
   };
 in
 
@@ -50,7 +50,7 @@ in
     vscode-langservers-extracted
     tailwindPkg
     # tailwindcss-language-server
-    biomePkg
+    # biomePkg
     pkgs.nodejs_22
   ];
 
@@ -113,7 +113,7 @@ in
       # };
       biome = {
         command = biomeCommand;
-        args = [ "lsp-proxy" ];
+        args = [ "biome" "lsp-proxy" ];
       };
       # would use args = [ "--stdio" ]
       # but this error happens https://github.com/denoland/deno/issues/23133

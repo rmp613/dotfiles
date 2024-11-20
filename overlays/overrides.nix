@@ -14,7 +14,7 @@ channels: final: prev: {
     starship
     wezterm
     zoxide
-    helix-editor
+    # helix-editor
     rainfrog
     warp-terminal
 

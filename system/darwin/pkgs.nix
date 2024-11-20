@@ -12,10 +12,17 @@
       Slack = 803453959;
       Bitwarden = 1352778147;
     };
+    # command line apps
     brews = [
+      "supabase"
+      "git"
       # "CTRLSpice/tap/otel-desktop-viewer"
-      # "ymtdzzz/tap/otel-tui"
+      "otel-tui"
+      "neonctl"
+      "podman"
+      "git-sizer"
     ];
+    # graphical apps
     casks = [
       # "gdu"
       # https://github.com/NixOS/nixpkgs/issues/254944
@@ -23,11 +30,11 @@
       # "1password-cli"
       # "docker"
       # "google-chrome"
-      # "raycast"
       # "scroll-reverser"
       # "openscad-snapshot"
       "discord"
       "warp"
+      "podman-desktop"
       # "font-jetbrains-mono"
       # "font-jetbrains-mono-nerd-font"
       "google-chrome"
@@ -37,18 +44,17 @@
       "visual-studio-code"
       "arc"
       "linear-linear"
-      "orbstack"
+      # "orbstack"
       "rectangle"
       "soundsource"
-      "istat-menus"
       "raycast"
       "iina"
-      "tableplus"
       "microsoft-teams"
     ];
 
     taps = [
-      "homebrew/cask-versions"
+      "supabase/tap"
+      "ymtdzzz/tap"
     ];
   };
 }
