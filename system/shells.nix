@@ -6,7 +6,7 @@
   };
 
   programs = {
-    bash.enableCompletion = true;
+    bash.completion.enable= true;
 
     fish.enable = true;
     fish.vendor.completions.enable = true;

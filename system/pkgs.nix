@@ -27,6 +27,7 @@
     lsof
     neofetch
     ripgrep
+    watchexec
     sqlite
     unzip
   ] ++ (lib.optionals pkgs.stdenv.isDarwin [

@@ -3,7 +3,7 @@
 {
   nix = {
     settings = {
-      auto-optimise-store = true;
+      # optimise = { automatic = true; };
       trusted-users = [ "root" "@wheel" ];
     };
 

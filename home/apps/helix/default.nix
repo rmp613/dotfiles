@@ -86,14 +86,14 @@ let
         mode.insert = "";
         mode.select = "";
 
-        left = [ "mode" "spacer" "spinner" "file-name" ];
+        left = [  "spinner" "file-name" ];
         right = [
           "diagnostics"
           "position"
-          "primary-selection-length"
-          "file-encoding"
-          "file-type"
-          "version-control"
+          # "primary-selection-length"
+          # "file-encoding"
+          # "file-type"
+          # "version-control"
           "spacer"
           "position-percentage"
         ];

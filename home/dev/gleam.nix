@@ -22,7 +22,7 @@ in
     home.packages = with pkgs; [
       nodejs_22
       corepackEnable
-      erlang_26
+      erlang_27
       gleam
       rebar3
     ];

@@ -28,10 +28,10 @@ let
     with pkgs.nodePackages;
 
     if lang == "typescript"
-    # then "${typescript-language-server}/bin/typescript-language-server"
+    then "${typescript-language-server}/bin/typescript-language-server"
     # else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
     # trial vtsls instead
-    then "pnpm"
+    # then "pnpm"
     else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
 
   biomeCommand = "pnpm";
