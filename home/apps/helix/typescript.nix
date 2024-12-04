@@ -3,11 +3,6 @@
 let
   # biomePkg = pkgs.biome;
   tailwindPkg = pkgs.nodePackages."@tailwindcss/language-server";
-  # helixGptPath = helix-gpt;
-  # helixGptCfg = {
-  #   command = helixGptBinPath;
-  #   args = [ "--handler" "copilot" "--logFile"  "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
-  # };
   cfg = {
     indent = {
       tab-width = 2;
@@ -17,7 +12,7 @@ let
     auto-format = true;
     language-servers = [
       { name = "typescript-language-server"; except-features = [ "format" ]; }
-      # "gpt"
+      "gpt"
       "tailwindcss-ls"
       "biome"
     ];
@@ -106,11 +101,13 @@ in
     ];
 
     language-server = {
-      # gpt = {
-      #   command = "bun";
-      #   # note that we need to manually install this js file currently
-      #   args = [ "run" "/usr/local/bin/helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
-      # };
+      gpt = {
+        command = "helix-gpt";
+        environment = { HANDLER = "COPILOT"; };
+
+        # note that we need to manually install this js file currently
+        # args = [ "run" "/usr/local/bin/helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/.logs/helix-gpt.log" ];
+      };
       biome = {
         command = biomeCommand;
         args = [ "biome" "lsp-proxy" ];
