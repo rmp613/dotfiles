@@ -103,7 +103,7 @@ in
     language-server = {
       gpt = {
         command = "helix-gpt";
-        environment = { HANDLER = "COPILOT"; };
+        environment = { HANDLER = "copilot"; LOG_FILE = "/Users/riordan/.logs/helix-gpt.log"; };
 
         # note that we need to manually install this js file currently
         # args = [ "run" "/usr/local/bin/helix-gpt" "--handler" "copilot" "--logFile" "${config.home.homeDirectory}/.logs/helix-gpt.log" ];

@@ -136,10 +136,6 @@ in
         enable = true;
         settings = settings;
       };
-
-      # helix-gpt = {
-      #   enable = true;
-      # };
     };
 
     d.shell = {

@@ -2,14 +2,14 @@
   description = "My NixOS ❄ / MacOS 🍏 Configuration";
 
   inputs = {
-    stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    stable.url = "github:nixos/nixpkgs/nixos-unstable";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    darwin.url = "github:LnL7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "stable";
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "unstable";
 
-    hm.url = "github:nix-community/home-manager/release-24.11";
-    hm.inputs.nixpkgs.follows = "stable";
+    hm.url = "github:nix-community/home-manager";
+    hm.inputs.nixpkgs.follows = "unstable";
 
     hardware.url = "github:NixOS/nixos-hardware/master";
 

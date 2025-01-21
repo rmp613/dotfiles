@@ -14,13 +14,13 @@
     };
     # command line apps
     brews = [
-      "supabase"
       "git"
       # "CTRLSpice/tap/otel-desktop-viewer"
       "otel-tui"
       "neonctl"
       "podman"
       "git-sizer"
+      "bottom"
     ];
     # graphical apps
     casks = [
@@ -35,6 +35,7 @@
       "discord"
       "warp"
       "podman-desktop"
+      "ghostty"
       # "font-jetbrains-mono"
       # "font-jetbrains-mono-nerd-font"
       "google-chrome"
