@@ -9,7 +9,8 @@ in
 
   programs.helix.languages = {
     language-server.prisma-language-server = {
-      command = "${pkg}/bin/prisma-language-server";
+      command = "pnpm";
+      args = [ "prisma-language-server" "--stdio" ];
     };
   };
 }

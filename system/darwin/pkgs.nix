@@ -32,6 +32,7 @@
       # "google-chrome"
       # "scroll-reverser"
       # "openscad-snapshot"
+      "mouseless"
       "discord"
       "warp"
       "podman-desktop"

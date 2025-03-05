@@ -33,7 +33,7 @@ in
       enable = true;
 
       userName = "Riordan Pawley";
-      userEmail = "riordan@dogg.com.au";
+      userEmail = "riordan@chefy.com.au";
 
       # # Signing is done via the 1Password app
       # signing = {
@@ -51,17 +51,25 @@ in
         #   ssh.program = config.d.apps.onepassword.ssh.sign;
         # };
 
+        commit = { verbose = true; };
         log = {
           decorate = true;
           abbrevCommit = true;
         };
 
         pull.rebase = false;
+        diff = {
+          algorithm = "histogram";
+          colorMoved = "zebra";
+          
+        };
 
         # Autostash on "git pull ..."
         merge = {
           autoStash = true;
-          conflictStyle = "diff3";
+          conflictStyle = "zdiff3";
+          mnemonicPrefix = true;
+          renames = true;
         };
         rerere.enabled = true;
         help.autocorrect = 1;

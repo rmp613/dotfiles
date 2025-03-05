@@ -69,10 +69,12 @@ let
       };
       # FIXME: remove once https://github.com/helix-editor/helix/issues/1475 is fixed
       # auto-info = false;
+      end-of-line-diagnostics = "hint";
 
       inline-diagnostics = {
-        cursor-line = "hint";
-        other-lines = "error";
+        cursor-line = "warning";
+        # other-lines = "error";
+
       };
       lsp = { };
       cursor-shape = {
