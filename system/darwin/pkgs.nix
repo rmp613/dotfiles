@@ -19,6 +19,8 @@
       "otel-tui"
       "neonctl"
       "podman"
+      "podman-compose"
+      "docker-compose"
       "git-sizer"
       "bottom"
     ];
