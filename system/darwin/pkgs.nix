@@ -23,6 +23,7 @@
       "docker-compose"
       "git-sizer"
       "bottom"
+      "scooter"
     ];
     # graphical apps
     casks = [

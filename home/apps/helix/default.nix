@@ -41,10 +41,17 @@ let
         #   "b" = "move_prev_sub_word_start";
         #   "e" = "move_next_sub_word_end";
         # };
+
+        C-r = [
+          ":write-all"
+          ":insert-output scooter >/dev/tty"
+          ":redraw"
+          ":reload-all"
+        ];
         C-y = [
           ":sh rm -f /tmp/unique-file"
           ":insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file"
-          ":insert-output echo \"\x1b[?1049h\x1b[?2004h\" > /dev/tty"
+          '':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty''
           ":open %sh{cat /tmp/unique-file}"
           ":redraw"
           ":set mouse false" # First disable mouse to hint helix into activating it
@@ -154,6 +161,7 @@ in
     };
     programs = {
       helix = {
+        # package = helix.packages.${pkgs.system}.default;
         enable = true;
         settings = settings;
       };
