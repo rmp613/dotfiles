@@ -41,6 +41,25 @@ let
         #   "b" = "move_prev_sub_word_start";
         #   "e" = "move_next_sub_word_end";
         # };
+        C-y = [
+          ":sh rm -f /tmp/unique-file"
+          ":insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file"
+          ":insert-output echo \"\x1b[?1049h\x1b[?2004h\" > /dev/tty"
+          ":open %sh{cat /tmp/unique-file}"
+          ":redraw"
+          ":set mouse false" # First disable mouse to hint helix into activating it
+          ":set mouse true"
+        ];
+        C-g = [
+          ":write-all"
+          ":new"
+          ":insert-output lazygit"
+          ":set mouse false" # First disable mouse to hint helix into activating it
+          ":set mouse true"
+          ":buffer-close!"
+          ":redraw"
+          ":reload-all"
+        ];
       };
       select = {
         # on next release :)
@@ -88,7 +107,7 @@ let
         mode.insert = "";
         mode.select = "";
 
-        left = [  "spinner" "file-name" ];
+        left = [ "spinner" "file-name" ];
         right = [
           "diagnostics"
           "position"
